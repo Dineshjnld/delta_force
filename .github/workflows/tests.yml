@@ -84,24 +84,4 @@ jobs:
           pip install readme_renderer readme_renderer[md]
           python -m readme_renderer README.md
 
-      - name: Notify Slack on success
-        if: success() && steps.fork_check.outputs.is_fork == 'false'
-        uses: slackapi/slack-github-action@v1.24.0
-        with:
-          payload: |
-            {
-              "text": "✅ *Tests Passed* for `${{ github.repository }}` on `${{ github.ref_name }}`"
-            }
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
 
-      - name: Notify Slack on failure
-        if: failure() && steps.fork_check.outputs.is_fork == 'false'
-        uses: slackapi/slack-github-action@v1.24.0
-        with:
-          payload: |
-            {
-              "text": "❌ *Tests Failed* for `${{ github.repository }}` on `${{ github.ref_name }}`"
-            }
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
