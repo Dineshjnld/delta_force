@@ -1,0 +1,38 @@
+fastapi
+uvicorn[standard]
+pydantic
+requests
+python-dotenv
+sqlalchemy
+pandas
+openpyxl
+
+# Voice Input Agent dependencies
+SpeechRecognition
+# PyAudio might be needed by SpeechRecognition on some systems, install manually if needed
+# For Whisper and potentially IndicConformer:
+transformers
+torch
+torchaudio
+librosa # For audio processing if needed
+# Add IndicConformer specific package when identified
+# Add Whisper specific package if not solely through transformers (e.g. openai-whisper)
+
+# Text Processing Agent dependencies
+language-tool-python
+sentencepiece # Often used with T5 models
+
+# SQL Generation Agent (Vanna AI) dependencies
+vanna
+oracledb # Modern Oracle DB driver for Python
+chromadb
+# Ollama is typically run as a separate service.
+# Vanna will connect to it via its API endpoint.
+# No specific 'ollama' client library usually needed for Vanna's core functionality.
+
+# Reporting and Visualization Agent dependencies
+streamlit
+matplotlib
+plotly
+# altair # Another good charting option, often used with Streamlit
+fpdf2 # For PDF generation
